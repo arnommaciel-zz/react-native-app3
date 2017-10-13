@@ -8,6 +8,9 @@ import {
     Button
 } from 'react-native';
 
+import Topo from './src/components/topo';
+import Icone from './src/components/icone';
+
 class app3 extends Component{
     
     constructor(props){
@@ -55,16 +58,49 @@ class app3 extends Component{
 
     render() {
         return (
-            <View style={{paddingTop:25}}>
-                <Text>Escolha do computador: {this.state.maquina}</Text>
-                <Text>Escolha do usuário: {this.state.usuario}</Text>
-                <Text>Resultado: {this.state.resultado}</Text>
-                <Button title='pedra' onPress={() => {this.jokenpo('pedra')}}/>
-                <Button title='papel'onPress={() => {this.jokenpo('papel')}}/>
-                <Button title='tesoura'onPress={() => {this.jokenpo('tesoura')}}/>
+            <View style={{paddingTop:20}}>
+                <Topo/>
+                <View style={styles.actions}>
+                    <View style={styles.btn}>
+                        <Button title='pedra' onPress={() => {this.jokenpo('pedra')}}/>
+                    </View>
+                    <View style={styles.btn}>
+                        <Button title='papel'onPress={() => {this.jokenpo('papel')}}/>
+                    </View>
+                    <View style={styles.btn}>
+                        <Button title='tesoura'onPress={() => {this.jokenpo('tesoura')}}/>
+                    </View> 
+                </View>
+                <View style={styles.results}>
+                    <Text style={styles.resultado}>{this.state.resultado}</Text>
+                    
+                    <Icone escolha={this.state.maquina} jogador='Computador'/>
+                    <Icone escolha={this.state.usuario} jogador='Você'/>
+                    
+                </View>
             </View>
         );
     }
 }
 
+
+const styles = StyleSheet.create({
+    btn:{
+        width: 90
+    },
+    actions:{
+        marginTop: 10,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    results:{
+        alignItems: 'center'
+    },
+    resultado:{
+        fontSize: 25,
+        fontWeight: 'bold',
+        color: 'red',        
+        padding: 20
+    }
+});
 AppRegistry.registerComponent('app3', () => app3);
