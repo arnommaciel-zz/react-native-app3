@@ -11,23 +11,23 @@ import {
 import Topo from './src/components/topo';
 import Icone from './src/components/icone';
 
-class app3 extends Component{
+class app3 extends Component {
     
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {usuario:'', maquina: '', resultado: ''}
     }
 
-    jokenpo(usuario){
-        var opcoes = [
+    jokenpo(usuario) {
+        let opcoes = [
             "pedra",
             "papel",
             "tesoura"
         ];
         
-        var maquina = opcoes[Math.floor(Math.random()*3)];
+        let maquina = opcoes[Math.floor(Math.random()*3)];
         
-        var resultado = '';
+        let resultado = '';
         if(maquina == usuario){
             resultado = 'Empate';
         } else if(maquina == 'pedra'){
@@ -103,4 +103,5 @@ const styles = StyleSheet.create({
         padding: 20
     }
 });
+
 AppRegistry.registerComponent('app3', () => app3);
